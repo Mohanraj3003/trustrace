@@ -1,0 +1,105 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-image: linear-gradient(
+    to right,
+    rgb(4, 146, 156),
+    rgb(34, 170, 170),
+    rgb(11, 250, 250)
+  );
+  color: white;
+  box-sizing: border-box;
+  border: none;
+}
+section {
+  margin-left: 20%;
+  /* border: 1px solid rgb(240, 63, 10); */
+  width: 50%;
+  margin-top: 3%;
+  height: 600px;
+  font-weight: 700;
+}
+
+form {
+  width: 100%;
+  height: 75%;
+}
+
+form > * {
+  height: 30px;
+  margin: 10px;
+}
+label {
+  margin-right: 10%;
+  /* border: 1px solid red; */
+  padding: 0;
+}
+
+input[name="fname"],
+input[name="lname"] {
+  width: 30%;
+}
+
+input[name="email"] {
+  width: 65%;
+}
+
+input[name='number1'],
+input[name='number2'],
+input[name='number3'] {
+  width: 15%;
+}
+input[name="number"] {
+  width: 18%;
+}
+
+select,
+select option {
+  width: 50%;
+  height: 10%;
+  font-size: medium;
+}
+
+textarea {
+  height: auto;
+}
+
+#line {
+  border: 0.5px solid white;
+  height: 0;
+  margin-top: 10%;
+}
+
+input[type="submit"] {
+  background-color: transparent;
+  border-radius: 10%;
+  color: white;
+  padding: 5px;
+  border: 1px solid white;
+  width: 20%;
+  height: 10%;
+  font-weight: 600;
+}
+/* validation styles */
+
+input.valid{
+    border-color: #36cc36;
+}
+input.invalid{
+    border-color: orange;
+}
+input + p{
+    font-family: arial;
+    font-size: 0.9em;
+    font-weight: bold;
+    text-align: center;
+    margin: 0 10px;
+    color: orange;
+    opacity: 0;
+    height: 0;
+}
+input.invalid + p{
+    opacity: 1;
+    height: auto;
+    margin-bottom: 20px;
+}

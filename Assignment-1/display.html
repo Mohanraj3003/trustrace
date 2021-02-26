@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background-image: linear-gradient(
+          to right,
+          rgb(4, 180, 192),
+          rgb(108, 194, 194),
+          rgb(177, 245, 245)
+        );
+        color: rgb(54, 122, 139);
+        margin: 10%;
+      }
+      div {
+        margin: 20px;
+        font-size: large;
+        width: 60%;
+        background-color: rgb(147, 211, 190);
+      }
+      label {
+        padding-right: 40px;
+      }
+      span {
+        font-weight: 700;
+        color: rgb(65, 92, 116);
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body onload="isload()">
+    <section>
+      <div>
+        <label>FirstName:</label>
+        <span name="fname">o</span>
+      </div>
+      <div>
+        <label>LastName:</label>
+        <span name="lname"></span>
+      </div>
+      <div>
+        <label>Mail: </label>
+        <span name="email"></span>
+      </div>
+      <div>
+        <label>PhoneNumber:</label>
+        <span name="number1"></span>
+        <span name="number2"></span>
+        <span name="number3">4</span>
+      </div>
+      <div>
+        <label>Message Subject:</label>
+        <span name="Subject"></span>
+      </div>
+      <div>
+        <label>Message:</label>
+        <span name="msg"></span>
+      </div>
+    </section>
+    <script>
+      const url = new URL(window.location.href);
+      let spans = document.querySelectorAll("span");
+
+      function isload() {
+        console.log(spans);
+        spans.forEach((ele) => {
+          ele.innerText = url.searchParams.get(`${ele.attributes.name.value}`);
+        });
+      }
+    </script>
+  </body>
+</html>
