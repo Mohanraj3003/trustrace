@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Post</title>
+    <link href="./style.css" rel="stylesheet" />
+  </head>
+  <body onload="posts()">
+    <header>REST API Using JSONPlaceholder</header>
+    <div class="container">
+      <div class="create">
+        <form method="GET" action="" id="form">
+          <div class="formfield">
+            <label>Title:</label>
+            <input
+              type="text"
+              placeholder="Give some title"
+              name="title"
+              id="title"
+            />
+          </div>
+          <div class="formfield">
+            <label>Body:</label>
+            <textarea
+              type="text"
+              name="body"
+              placeholder="Describe it..!"
+              id="body"
+            ></textarea>
+          </div>
+          <div class="formfield">
+            <label>Userid:</label>
+            <input
+              type="text"
+              placeholder="ex:1,2,..."
+              name="userid"
+              id="userId"
+            />
+          </div>
+          <input type="submit" value="Post" id="btn" />
+        </form>
+      </div>
+      <div id="posts"></div>
+    </div>
+    <footer>Bye bye....!</footer>
+    <script src="./script.js"></script>
+  </body>
+</html>
