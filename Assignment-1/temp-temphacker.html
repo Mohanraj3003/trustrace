@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        width: 33%;
+      }
+      #res {
+        background-color: lightgray;
+        border: solid;
+        height: 48px;
+        font-size: 20px;
+      }
+      #btn0,
+      #btn1 {
+        background-color: lightgreen;
+        color: brown;
+      }
+      #btnClr,
+      #btnEql {
+        background-color: darkgreen;
+        color: white;
+      }
+      #btnSum,
+      #btnSub,
+      #btnMul,
+      #btnDiv {
+        background-color: black;
+        color: red;
+      }
+      #btns > * {
+        width: 25%;
+        height: 36px;
+        font-size: 18px;
+        margin: 0;
+        float: left;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="res"></div>
+    <div id="btns">
+      <button id="btn0" name="0">0</button>
+      <button id="btn1" name="1">1</button>
+      <button id="btnClr" name="C">C</button>
+      <button id="btnEql" name="=">=</button>
+      <button id="btnSum" name="+">+</button>
+      <button id="btnSub" name="-">-</button>
+      <button id="btnMul" name="*">*</button>
+      <button id="btnDiv" name="/">/</button>
+    </div>
+    <script>
+      let res = document.getElementById("res");
+      let display, num1, num2, symbol;
+
+      function calc(n1, n2, sy) {
+        n1 = parseInt(n1, 2);
+        n2 = parseInt(n2, 2);
+        let x = eval(`${n1}${sy}${n2}`);
+        let rem,
+          i = 1,
+          step = 1,
+          bin = 0;
+        while (x != 0) {
+          rem = x % 2;
+          x = parseInt(x / 2);
+          bin = bin + rem * i;
+          i = i * 10;
+        }
+        res.innerHTML = bin;
+      }
+      function action(val) {
+        if (val == "C") {
+            res.innerHTML=''
+         return (display = undefined), (num1 = undefined), (num2 = undefined);
+        }
+        if (val === "=") {
+          return calc(num1, num2, symbol);
+        } else if (display == undefined) {
+          display = val;
+          num2 = val;
+        } else {
+          display += val;
+          if ((val === "+") | (val === "-") | (val === "*") | (val === "/")) {
+            symbol = val;
+            num1 = num2;
+            num2 = undefined;
+          } else {
+            if (num2 == undefined) {
+              num2 = val;
+            } else {
+              num2 += val;
+            }
+          }
+        }
+        res.innerHTML = display;
+      }
+      let lis = document.querySelectorAll("button");
+      lis.forEach((ele) => {
+        ele.addEventListener("click", (e) => {
+          action(e.target.attributes.name.value);
+        });
+      });
+    </script>
+  </body>
+</html>

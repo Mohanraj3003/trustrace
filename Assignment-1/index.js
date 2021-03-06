@@ -23,6 +23,21 @@ function validate(field, regex){
 
 inputs.forEach((input) => {
     input.addEventListener('keyup', (e) => {
+        // console.log(e.target);
             validate(e.target, patterns[e.target.attributes.name.value]);
     });
 });
+
+
+// let hi = new Promise((resolve,reject)=>{
+//         // resolve('sucess..!')
+
+//         reject('fail..!');
+//     })
+
+
+// hi.then((result)=>{
+//     console.log(result)
+// }).catch(e=>{
+//     console.log(e)
+// })  

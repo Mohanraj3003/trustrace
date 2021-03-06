@@ -36,7 +36,7 @@
     <section>
       <div>
         <label>FirstName:</label>
-        <span name="fname">o</span>
+        <span name="fname"></span>
       </div>
       <div>
         <label>LastName:</label>
@@ -66,7 +66,7 @@
       let spans = document.querySelectorAll("span");
 
       function isload() {
-        console.log(spans);
+        // console.log(spans);
         spans.forEach((ele) => {
           ele.innerText = url.searchParams.get(`${ele.attributes.name.value}`);
         });
@@ -74,3 +74,4 @@
     </script>
   </body>
 </html>
+`${fname}`
