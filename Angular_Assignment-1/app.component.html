@@ -1,0 +1,23 @@
+<style>
+  h4 {
+    text-align: center;
+  }
+  .sucess {
+    color: green;
+  }
+  .fail {
+    color: red;
+  }
+</style>
+<div>
+  <h4>App component</h4>
+  <app-login
+    [username]="username"
+    [password]="password"
+    (returnval)="displayresult($event)"
+  ></app-login>
+  <h1 *ngIf="result != undefined">
+    <h2 class="sucess" *ngIf="result == 'true'; else elseblock">Success..!</h2>
+    <ng-template #elseblock> <h2 class="fail">Fail...</h2> </ng-template>
+  </h1>
+</div>
