@@ -43,7 +43,7 @@ async function posts() {
             console.log(div)
         }))
 
-    console.log('ji')
+    // console.log('ji')
     cardevent()
 }
 
@@ -107,21 +107,12 @@ submit.addEventListener('click', async (e) => {
 
 
 function cardevent() {
-
     let card = document.querySelectorAll('button');
     card.forEach(i => {
 
         i.addEventListener('click', e => {
 
             if (e.target.id == 'comment') {
-                // console.log(e.target.id)
-                // console.log(e.target.parentNode.parentNode);
-                // fetch(`https://jsonplaceholder.typicode.com/posts/${e.target.parentNode.parentNode.getAttribute("data-id")}/comments`)
-                //     .then((response) => response.json())
-                //     .then((json) => {
-                //         //
-                //         //
-                //     });
                 const tab = window.open(`https://jsonplaceholder.typicode.com/posts/${e.target.parentNode.parentNode.getAttribute("data-id")}/comments`, '_blank');
             }
             else {
