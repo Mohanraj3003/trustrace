@@ -1,0 +1,21 @@
+<p>get works!</p>
+<style>
+  .card {
+    /* height: 3rem; */
+    background-color: antiquewhite;
+    border-radius: 20px;
+    margin: 2rem;
+    padding: 1rem;
+    line-height: 2rem;
+  }
+</style>
+
+<div *ngFor="let i of list">
+  <div class="card">
+    <strong>userid:</strong> {{ i.userId }} <br />
+    <strong>title:</strong> {{ i.title }} <br />
+    <strong>completed:</strong> {{ i.completed }}
+  </div>
+</div>
+
+userId:number, title:string, complete:boolean

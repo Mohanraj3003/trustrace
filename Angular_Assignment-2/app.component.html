@@ -1,0 +1,31 @@
+<style>
+  h4 {
+    text-align: center;
+  }
+
+  nav {
+    width: 40vh;
+    margin: 30vh auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  a {
+    margin: 1rem;
+    background-color: rgb(163, 163, 204);
+    border-radius: 150px;
+    padding: 5px;
+    text-align: center;
+    justify-self: center;
+    text-decoration: none;
+  }
+</style>
+<div>
+  <h4>{{ title }}</h4>
+  <nav>
+    <a routerLink="/two">two way binding</a>
+    <a routerLink="/get">Get</a>
+    <a routerLink="/post">Post</a>
+  </nav>
+</div>
+<router-outlet></router-outlet>

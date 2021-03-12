@@ -1,0 +1,37 @@
+<style>
+  * {
+    box-sizing: border-box;
+  }
+  .card {
+    width: 40%;
+    margin: auto;
+    border: 7px double gray;
+  }
+
+  input,
+  .input {
+    width: 80%;
+    height: 30px;
+    margin: 20px;
+  }
+  button {
+    width: 30%;
+    height: 30px;
+    margin: 10px 35%;
+  }
+  .res {
+    border: 6px dotted greenyellow;
+  }
+</style>
+<div class="card">
+  <input type="text" #userid placeholder="UserId" />
+  <input type="text" #title placeholder="title" />
+  <input type="text" #status placeholder="status" />
+  <button (click)="add(userid.value, title.value, status.value)">ADD</button>
+</div>
+<div *ngIf="returnData != undefined" class="card res">
+  <div class="input"><strong>id: </strong>{{ returnData.id }}</div>
+  <div class="input"><strong>UserId: </strong>{{ returnData.userId }}</div>
+  <div class="input"><strong>title:</strong>{{ returnData.title }}</div>
+  <div class="input"><strong>completed:</strong>{{ returnData.completed }}</div>
+</div>
