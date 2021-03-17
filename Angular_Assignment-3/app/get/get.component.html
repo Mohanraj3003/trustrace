@@ -1,0 +1,47 @@
+<style>
+  .div {
+    width: 80vw;
+    margin: 20vh auto;
+  }
+  .in {
+    width: 50%;
+    margin: auto;
+  }
+  .pointer {
+    cursor: pointer;
+  }
+</style>
+
+<button class="btn btn-primary btn-lg m-2" (click)="backClicked()">Back</button>
+<div class="input-group input-group-lg mt-5 in">
+  <span class="input-group-text" id="inputGroup-sizing-lg">Search</span>
+  <input
+    type="text"
+    class="form-control"
+    aria-label="Sizing example input"
+    aria-describedby="inputGroup-sizing-lg"
+    [(ngModel)]="searchText"
+  />
+</div>
+<div class="div">
+  <table class="table table-dark table-striped table-hover">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">title</th>
+        <th scope="col">Completed</th>
+        <th scope="col">Edit Option</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let list of searchs | piping: searchText">
+      <tr>
+        <th scope="row">{{ list.id }}</th>
+        <td>{{ list.title }}</td>
+        <td>{{ list.completed }}</td>
+        <td>
+          <a (click)="edit(list.id)" class="link-primary pointer">Edit</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

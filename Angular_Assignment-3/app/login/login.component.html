@@ -1,0 +1,56 @@
+<style>
+  * {
+    margin: 0.5rem;
+  }
+  .form {
+    margin: 3rem auto;
+    width: 30vw;
+  }
+</style>
+<form
+  class="form border p-3"
+  #userForm="ngForm"
+  (ngSubmit)="onSubmit()"
+  novalidate
+>
+  <div class="form-group">
+    <label class="form-label">Username:</label>
+    <input
+      type="text"
+      class="form-control"
+      name="username"
+      ngModel
+      #urname="ngModel"
+      [class.is-invalid]="urname.touched && urname.invalid"
+      pattern="test"
+      required
+    />
+    <small class="text-danger" [class.d-none]="urname.untouched || urname.valid"
+      >username must be (test)</small
+    >
+  </div>
+  <div class="form-group">
+    <label class="form-label">Password:</label>
+    <input
+      type="text"
+      class="form-control"
+      name="password"
+      ngModel
+      #pass="ngModel"
+      [class.is-invalid]="pass.touched && pass.invalid"
+      pattern="test@123"
+      required
+    />
+    <small class="text-danger" [class.d-none]="pass.untouched || pass.valid"
+      >Password must be (test@123)</small
+    >
+  </div>
+  <button
+    type="submit"
+    class="btn btn-primary"
+    [disabled]="!userForm.form.valid"
+    [class.btn-light]="!userForm.form.valid"
+  >
+    Submit
+  </button>
+</form>
