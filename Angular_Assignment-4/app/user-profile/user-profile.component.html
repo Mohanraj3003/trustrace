@@ -1,0 +1,30 @@
+<form class="form w-50 p-3 m-3">
+  <div class="form-group">
+    <label class="form-label">Search User Profile:</label>
+    <input
+      type="text"
+      class="form-control"
+      [(ngModel)]="userId"
+      name="userId"
+      placeholder="Enter User Id"
+    />
+    <button class="btn btn-info mt-3" (click)="user()">GET USER</button>
+  </div>
+</form>
+
+<div *ngIf="result != undefined">
+  <div class="card text-white bg-dark">
+    <div class="card-body">
+      <div>
+        <strong class="m-1">display Name:</strong>{{ result.display_name }}
+      </div>
+      <div>
+        <strong class="m">Followers:</strong>{{ result.followers.total }}
+      </div>
+      <div>
+        <strong class="m-1">Link:</strong>
+        <a target="_blank" [href]="result.external_urls.spotify"> Click Here</a>
+      </div>
+    </div>
+  </div>
+</div>

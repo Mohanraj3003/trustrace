@@ -1,0 +1,77 @@
+<style>
+  .dis {
+    cursor: not-allowed;
+  }
+</style>
+<h2 class="mt-3 text-green">Create PlayList</h2>
+<form class="form w-50 p-3 m-3" #userForm="ngForm">
+  <div class="form-group">
+    <label class="form-label">User id:</label>
+    <input
+      type="text"
+      class="form-control m-2 dis"
+      [ngModel]="id"
+      name="id"
+      disabled
+    />
+  </div>
+  <div class="form-group">
+    <label class="form-label">PlayList Name:</label>
+    <input
+      type="text"
+      class="form-control m-2"
+      [ngModel]="body.name"
+      name="name"
+      placeholder="PlayList Name"
+    />
+  </div>
+  <div class="form-group">
+    <label class="form-label">PlayList Description:</label>
+    <input
+      type="text"
+      class="form-control m-2"
+      [ngModel]="body.description"
+      name="description"
+      placeholder="PlayList description"
+    />
+  </div>
+  <div class="form-group">
+    <label class="form-label">Visibility:</label>
+    <input
+      type="text"
+      class="form-control m-2 dis"
+      [ngModel]="body.public"
+      name="public"
+      disabled
+    />
+  </div>
+
+  <button class="btn btn-info mt-3" (click)="userclick(userForm.value)">
+    CREATE
+  </button>
+</form>
+<div *ngIf="result != undefined">
+  <div class="card text-white bg-dark">
+    <div class="card-body">
+      <div><strong class="m-1">PlayList Name:</strong>{{ result.name }}</div>
+      <div>
+        <strong class="m-1">PlayList Description:</strong
+        >{{ result.description }}
+      </div>
+      <div>
+        <strong class="m-1">Display Name:</strong
+        >{{ result.owner.display_name }}
+      </div>
+      <div>
+        <strong class="m-1">User Link:</strong>
+        <a target="_blank" [href]="result.owner.external_urls.spotify">
+          Click Here</a
+        >
+      </div>
+      <div>
+        <strong class="m-1">PlayList Link:</strong>
+        <a target="_blank" [href]="result.external_urls.spotify"> Click Here</a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+<style>
+  .dis {
+    cursor: not-allowed;
+  }
+</style>
+
+<h3>Delete Songs</h3>
+<form class="form w-50 p-3 m-3">
+  <div class="form-group">
+    <label class="form-label">Enter PlayList Id:</label>
+    <input
+      type="text"
+      class="form-control m-2"
+      name="id"
+      placeholder="User Id"
+      #id
+    />
+  </div>
+  <button class="btn btn-info" (click)="getuser(id.value)">Get</button>
+</form>
+<div *ngIf="getdata != undefined" class="w-50 p-3 m-3">
+  <hr />
+  <div *ngFor="let i of getdata.items">
+    <div class="card border m-3">
+      <strong>Song Name:</strong> {{ i.track.name }}
+      <button (click)="del(i.track.uri, id.value)" class="btn btn-primary">
+        Delete
+      </button>
+    </div>
+  </div>
+</div>

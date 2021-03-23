@@ -1,0 +1,72 @@
+<style>
+  .dis {
+    cursor: not-allowed;
+  }
+</style>
+
+<h3>Update Playlist</h3>
+<form class="form w-50 p-3 m-3">
+  <div class="form-group">
+    <label class="form-label">Enter PlayList_id:</label>
+    <input
+      type="text"
+      class="form-control m-2"
+      name="id"
+      placeholder="User Id"
+      #id
+    />
+  </div>
+  <button class="btn btn-info" (click)="getuser(id.value)">Get</button>
+</form>
+<form *ngIf="getdata != undefined" class="form w-50 p-3 m-3" #userForm="ngForm">
+  <div class="form-group">
+    <label class="form-label">Display Name:</label>
+    <input
+      type="text"
+      class="form-control m-2 dis"
+      [ngModel]="getdata.owner.display_name"
+      name="display name"
+      disabled
+    />
+  </div>
+  <div class="form-group">
+    <label class="form-label">PlayList Name:</label>
+    <input
+      type="text"
+      class="form-control m-2"
+      [ngModel]="getdata.name"
+      name="name"
+      placeholder="PlayList Name"
+    />
+  </div>
+  <div class="form-group">
+    <label class="form-label">PlayList Description:</label>
+    <input
+      type="text"
+      class="form-control m-2"
+      [ngModel]="getdata.description"
+      name="description"
+      placeholder="PlayList description"
+    />
+  </div>
+  <div class="form-group">
+    <label class="form-label">Visibility:</label>
+    <input
+      type="text"
+      class="form-control m-2 dis"
+      [ngModel]="getdata.public"
+      name="public"
+      disabled
+    />
+  </div>
+
+  <button
+    class="btn btn-info mt-3"
+    (click)="userclick(userForm.value, id.value)"
+  >
+    UPDATE
+  </button>
+</form>
+<div *ngIf="return != undefined" class="alert alert-success">
+  {{ return }}
+</div>
