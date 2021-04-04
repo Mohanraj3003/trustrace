@@ -6,8 +6,9 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class CommonService {
+   client_id ='' // Client id from developers.spotify.com //
   url =
-    'https://accounts.spotify.com/authorize?client_id=8aac5220e40b426b92caf64a3ef753f8&redirect_uri=http://localhost:4200/dasboard&scope=playlist-modify-public&response_type=token';
+    `https://accounts.spotify.com/authorize?client_id=${client_id}&redirect_uri=http://localhost:4200/dasboard&scope=playlist-modify-public&response_type=token`;
   constructor(
     private http: HttpClient,
     private route: Router // private headres: HttpHeaders
