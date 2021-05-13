@@ -1,0 +1,78 @@
+<form [formGroup]="forms" (ngSubmit)="search(country.value)" class="m-5">
+  <input
+    [formControlName]="'country'"
+    type="text"
+    placeholder="Search Countries"
+    #country
+  />
+  <div class="form-check">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      id="recover"
+      [formControlName]="'recover'"
+    />
+    <label class="form-check-label" for="recover"> Recover cases </label>
+  </div>
+  <div class="form-check">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      id="death"
+      [formControlName]="'death'"
+    />
+    <label class="form-check-label" for="death"> Death cases </label>
+  </div>
+  <div class="form-check">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      id="confirm"
+      [formControlName]="'confirm'"
+    />
+    <label class="form-check-label" for="confirm"> Confirm cases </label>
+  </div>
+  <div class="form-check">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      id="active"
+      [formControlName]="'active'"
+    />
+    <label class="form-check-label" for="active"> Active cases </label>
+  </div>
+
+  <div>
+    <label class="form-text-label" for="from"> From Date </label>
+    <input
+      type="date"
+      id="from"
+      class="date form-control"
+      [formControlName]="'from'"
+      min="2020-01-01"
+      max="{{ max }}"
+      style="width: 250px"
+    />
+  </div>
+  <div>
+    <label class="form-text-label" for="to"> To Date </label>
+
+    <input
+      type="date"
+      id="to"
+      class="date form-control"
+      [formControlName]="'to'"
+      min="2020-01-01"
+      max="{{ max }}"
+      style="width: 250px"
+    />
+  </div>
+
+  <button type="submit" class="btn btn-primary m-">Search</button>
+</form>
+
+<div>
+  <canvas id="myChart" #myChart> </canvas>
+</div>
+
+<!-- <div *ngIf="display"></div> -->
