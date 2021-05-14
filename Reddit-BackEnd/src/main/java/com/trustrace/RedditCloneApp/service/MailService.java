@@ -48,7 +48,7 @@ public class MailService {
 
         tokenRepository.save(confirmationToken);
 
-        String link = "http://localhost:8000/api/auth/confirm?token=" + token;
+        String link = "http://localhost:8080/api/auth/confirm?token=" + token;
         send(
                 user.getMail(),
                 buildEmail(user.getUserName(), link));

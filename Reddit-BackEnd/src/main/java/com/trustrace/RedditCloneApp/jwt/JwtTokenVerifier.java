@@ -27,6 +27,8 @@ public class JwtTokenVerifier extends OncePerRequestFilter {
 
             String authorizationHeader = request.getHeader("Authorization");
 
+         System.out.println("Headers : "+authorizationHeader);
+
             try {
                 if(authorizationHeader.isEmpty() || ! authorizationHeader.startsWith("Bearer "))
                 {
@@ -35,10 +37,6 @@ public class JwtTokenVerifier extends OncePerRequestFilter {
             }catch (NullPointerException e){
                 throw  new  NullPointerException("Authorization token required");
             }
-
-
-
-
 
 
             String token = authorizationHeader.replace("Bearer","");
@@ -78,10 +76,15 @@ public class JwtTokenVerifier extends OncePerRequestFilter {
 
         String currentRequestURI =  request.getRequestURI();
 
-//        System.out.println("-------------------->>"+currentRequestURI+"--------------");
+        System.out.println("-------------------->>"+currentRequestURI+"--------------");
+
         boolean filterAndAllowApiUrls = Arrays
-                .asList("/api/auth","/api/auth/confirm")
+                .asList("/api/auth","/api/auth/confirm",
+                        "/api/auth/login",
+                        "/api/subreddit","/api/posts/")
                 .contains(currentRequestURI);
+
+        System.out.println("--- filter status: "+filterAndAllowApiUrls);
 
         return filterAndAllowApiUrls ;
     }

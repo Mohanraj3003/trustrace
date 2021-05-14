@@ -30,6 +30,11 @@ public class JwtUserNameAndPasswordAuthenticationFilter extends UsernamePassword
     }
 
     @Override
+    public String toString() {
+        return super.toString();
+    }
+
+    @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
 
         try{
@@ -38,7 +43,7 @@ public class JwtUserNameAndPasswordAuthenticationFilter extends UsernamePassword
 
             return authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
                     usernameAndPasswordAuthenticationRequest.getUserName(),
-                    (usernameAndPasswordAuthenticationRequest.getPassword())
+                    usernameAndPasswordAuthenticationRequest.getPassword()
 
             ));
 

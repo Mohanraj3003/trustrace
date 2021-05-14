@@ -9,6 +9,8 @@ import com.trustrace.RedditCloneApp.repository.VoteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 public class VoteService {
@@ -26,17 +28,22 @@ public class VoteService {
         Post post = postService.getOnePost(voteRequest.getPostId());
         User user = userService.getOneUser(voteRequest.getUserName());
 
-        if(voteRepository.existsById(voteRequest.getUserName())){
-            Vote oldVote = voteRepository.findById(voteRequest.getUserName()).get();
+        if(voteRepository.existsByUserName(voteRequest.getUserName()) && voteRepository.existsByPostId(voteRequest.getPostId())){
+            System.out.println("Allready.."+voteRequest);
+//            Vote oldVote = voteRepository.findById(voteRequest.getUserName()).get();
+            Vote oldVote = voteRepository.findAllByUserNameAndPostId(voteRequest.getUserName(),voteRequest.getPostId());
+            System.out.println("oldVotes:  "+oldVote);
             if(oldVote.getVoteType().equals(voteRequest.getVoteType())){
+                System.out.println("samevote...");
                 throw new AllReadyExistsException("You have already "+voteRequest.getVoteType()+"'d for this post");
             }else {
+                System.out.println("new vote....");
                 oldVote.setVoteType(voteRequest.getVoteType());
                 post.setVoteCount(post.getVoteCount()+(voteType(voteRequest.getVoteType())));
             }
             voteRepository.save(oldVote);
         }else{
-
+            System.out.println("newOne"+voteRequest);
             Vote newVote = new Vote(voteRequest.getUserName(), voteRequest.getVoteType(), voteRequest.getPostId());
             voteRepository.save(newVote);
             post.setVoteCount(post.getVoteCount()+(voteType(voteRequest.getVoteType())));
@@ -56,4 +63,7 @@ public class VoteService {
         return 0;
     }
 
+    public List getVote(String user) {
+        return voteRepository.findAllByUserName(user);
+    }
 }

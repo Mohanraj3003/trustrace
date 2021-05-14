@@ -1,6 +1,7 @@
 package com.trustrace.RedditCloneApp.configuration.authconfig;
 
 import com.trustrace.RedditCloneApp.model.User;
+import lombok.ToString;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -8,6 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Arrays;
 import java.util.Collection;
 
+@ToString
 public class MyUserDetails implements UserDetails {
 
     private final String userName;

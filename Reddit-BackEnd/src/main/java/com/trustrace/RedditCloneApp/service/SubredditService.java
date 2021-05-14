@@ -20,6 +20,9 @@ public class SubredditService {
     @Autowired
     SubredditRepository subredditRepository;
 
+    @Autowired
+    AuthService authService;
+
     public List<Subreddit> getAllSubreddit(){
         return subredditRepository.findAll();
     }
@@ -38,8 +41,9 @@ public class SubredditService {
             throw new AllReadyExistsException("SubredditName: "+subredditRequest.getSubredditName()+" is already exists ");
         }
 
-        Subreddit subreddit = new Subreddit(subredditRequest.getSubredditName(),subredditRequest.getDescription(),Instant.now()
-        ,subredditRequest.getUserName());
+        Subreddit subreddit = new Subreddit(subredditRequest.getSubredditName(),subredditRequest.getDescription(), Instant.now()
+//        ,authService.getCurrentUser().getUserName());
+        , subredditRequest.getUserName());
 
          return subredditRepository.save(subreddit);
     }

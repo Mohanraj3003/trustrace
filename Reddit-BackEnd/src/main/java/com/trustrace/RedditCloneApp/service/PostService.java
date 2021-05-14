@@ -37,14 +37,14 @@ public class PostService {
     public Post createNewPost(PostRequest postRequest) {
 
         Post post = new Post(postRequest.getPostName(),postRequest.getUrl(),postRequest.getDescription(),Instant.now(),
-                postRequest.getSubredditId(),postRequest.getUserName());
+                postRequest.getSubredditName(),postRequest.getUserName());
        Post response =  postRepository.save(post);
 
         User user = userService.getOneUser(post.getUserName());
         user.setPosts(response.getId());
         userService.saveUser(user);
 
-        Subreddit subreddit = subredditService.getOne(postRequest.getSubredditId());
+        Subreddit subreddit = subredditService.getOne(postRequest.getSubredditName());
         subreddit.setPostId(response.getId());
         subredditService.saveSubreddit(subreddit);
 

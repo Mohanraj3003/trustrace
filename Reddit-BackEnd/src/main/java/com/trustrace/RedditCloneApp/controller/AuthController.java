@@ -1,5 +1,6 @@
 package com.trustrace.RedditCloneApp.controller;
 
+import com.trustrace.RedditCloneApp.dto.LoginRequest;
 import com.trustrace.RedditCloneApp.dto.UserRequest;
 import com.trustrace.RedditCloneApp.service.AuthService;
 import com.trustrace.RedditCloneApp.service.MailService;
@@ -28,5 +29,9 @@ public class AuthController {
         return new ResponseEntity<>(mailService.confirmToken(token), HttpStatus.OK);
     }
 
+    @PostMapping("/login")
+    public ResponseEntity<?> loginRequest(@RequestBody LoginRequest loginRequest){
+        return  new ResponseEntity<>(authService.login(loginRequest),HttpStatus.OK);
+    }
 
 }

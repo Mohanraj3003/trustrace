@@ -1,5 +1,6 @@
 package com.trustrace.RedditCloneApp.service;
 
+import com.trustrace.RedditCloneApp.dto.CommentRequest;
 import com.trustrace.RedditCloneApp.model.Comment;
 import com.trustrace.RedditCloneApp.model.Post;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,11 +14,11 @@ public class CommentService {
     @Autowired
     PostService postService;
 
-    public Post newComment(String postid, String comments) {
+    public Post newComment(String postid, CommentRequest comments) {
 
         Post post = postService.getOnePost(postid);
 
-        Comment comment = new Comment(post.getUserName(),comments, Instant.now());
+        Comment comment = new Comment(comments.getUserName(),comments.getComment(), Instant.now());
 
         post.setComments(comment);
 
