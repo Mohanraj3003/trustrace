@@ -1,0 +1,11 @@
+<div class="container">
+  <div>
+    Welcome {{ user.userName }} alias <b>{{ user.name }}</b
+    >.<br />
+    You have posted <b>{{ postLength }}</b> time(s) and commented
+  </div>
+  <hr />
+  <div>Your Posts:</div>
+  <app-post-tile [posts]="posts"></app-post-tile>
+  <hr />
+</div>
