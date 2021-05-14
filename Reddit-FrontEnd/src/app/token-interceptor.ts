@@ -23,14 +23,15 @@ export class TokenInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     const jwtToken = this.authService.getJwtToken();
 
+    let token;
     if (jwtToken) {
-      req = req.clone({
+      token = req.clone({
         setHeaders: {
           Authorization: `Bearer ${jwtToken}`,
         },
       });
     }
 
-    return next.handle(req);
+    return next.handle(token);
   }
 }
